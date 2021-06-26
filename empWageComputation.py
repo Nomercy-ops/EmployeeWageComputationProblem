@@ -9,24 +9,32 @@
 import random
 
 
-def calculate_employee_wage():
+def calculate_employee_wage(workRatePerHour):
     """
 
     Description:
-        This method is called for getting attendance of an employee 
-        by genetaring random num between o and 1.
-        if number is 0 then employee is present else employee is absent.
-    
+        This method is called for getting  employee daily wage,
+        By multiplying workrateperhour and wagerateperhour.
+        
+    Parameter:
+        workRatePerHour is will be 8 for full time employee and used for calculating daily wage.
+
     """
 
+    wageRatePerHour = 20
+    employeeDailyWage = wageRatePerHour * workRatePerHour
+    print("Employee Daily wage is : " , employeeDailyWage ,"$")
+
+
+if __name__ == "__main__":
+   
     print(" Welcome to Employee Wage Computation Program ")
     attendance_check = random.randint(0, 1)
-
-    if(attendance_check == 0):
-        print("Employee is Present")
+    
+    # Taking fulltime as a constant variables
+    IS_FULL_TIME = 1
+    if(attendance_check == IS_FULL_TIME):
+        calculate_employee_wage(8)
 
     else:
-        print("Employee is Absent")
-
-
-calculate_employee_wage()
+        calculate_employee_wage(0)
