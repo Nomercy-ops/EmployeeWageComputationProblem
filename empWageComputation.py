@@ -8,8 +8,11 @@
 
 import random
 
-# variable for storing employee monthly wage.
+# variable for storing employee monthly wage and work rate per hour.
 employeeMonthlyWage = 0
+employeeWorkRatePerHour = 0
+
+
 def calculate_employee_wage(workRatePerHour):
     """
 
@@ -18,18 +21,24 @@ def calculate_employee_wage(workRatePerHour):
         daily wage and part time employee daily wages,
         By multiplying workrateperhour and wagerateperhour.
         Employee monthly wage is also calculated here and stored the value inside global variable employee monthly wage.
-        
+
 
 
     Parameter:
-        workRatePerHour is will be 8 for full time employee and 4 for part timr employee,
+        workRatePerHour  will be 8 for full time employee and 4 for part timr employee,
         and used for calculating daily wage.
 
     """
-    # defining wage rate per hour and employee monthly wage.
+    # global variable employee monthly wage.
     global employeeMonthlyWage
-    wageRatePerHour = 20
-    employeeDailyWage = wageRatePerHour * workRatePerHour
+    global employeeWorkRatePerHour
+
+    # assigning employee work rate per hour with work rate per hour.
+    employeeWorkRatePerHour = workRatePerHour
+    # constant variable
+    WAGE_RATE_PER_HOUR = 20
+
+    employeeDailyWage = WAGE_RATE_PER_HOUR * workRatePerHour
     employeeMonthlyWage += employeeDailyWage
     print("Employee Daily wage is : ", employeeDailyWage, "$")
 
@@ -105,12 +114,25 @@ def checkEmployee(check):
 
 
 print(" Welcome to Employee Wage Computation Program ")
-# defining working day per month and day
-workingDayPerMonth = 20
-day = 0
+# Constant variable
+WORKING_DAYS_PER_MONTH = 20
+WORKING_HOURS_PER_MONTH = 100
 
-for day in range(workingDayPerMonth):
+# instance variable
+totalWorkingDays = 0
+totalWorkingHours = 0
+
+while (totalWorkingHours <= WORKING_HOURS_PER_MONTH and totalWorkingDays < WORKING_DAYS_PER_MONTH):
+
     attendance_check = random.randint(0, 2)
     checkEmployee(attendance_check)
 
-print("Employee Monthly wage is : ", employeeMonthlyWage, "$") # printing employee monthly wage outside of for loop.
+    # increamenting days.
+    totalWorkingDays += 1
+    totalWorkingHours += employeeWorkRatePerHour
+
+# total working hours of an employee
+print("Employee Total Hours is :" ,totalWorkingHours)
+
+# printing employee monthly wage outside of for loop.
+print("Employee Monthly wage is : ", employeeMonthlyWage, "$")
