@@ -8,7 +8,8 @@
 
 import random
 
-
+# variable for storing employee monthly wage.
+employeeMonthlyWage = 0
 def calculate_employee_wage(workRatePerHour):
     """
 
@@ -16,6 +17,8 @@ def calculate_employee_wage(workRatePerHour):
         This method is called for getting Fulltime employee
         daily wage and part time employee daily wages,
         By multiplying workrateperhour and wagerateperhour.
+        Employee monthly wage is also calculated here and stored the value inside global variable employee monthly wage.
+        
 
 
     Parameter:
@@ -23,9 +26,11 @@ def calculate_employee_wage(workRatePerHour):
         and used for calculating daily wage.
 
     """
-    # defining wage rate per hour.
+    # defining wage rate per hour and employee monthly wage.
+    global employeeMonthlyWage
     wageRatePerHour = 20
     employeeDailyWage = wageRatePerHour * workRatePerHour
+    employeeMonthlyWage += employeeDailyWage
     print("Employee Daily wage is : ", employeeDailyWage, "$")
 
 
@@ -100,5 +105,12 @@ def checkEmployee(check):
 
 
 print(" Welcome to Employee Wage Computation Program ")
-attendance_check = random.randint(0, 2)
-checkEmployee(attendance_check)
+# defining working day per month and day
+workingDayPerMonth = 20
+day = 0
+
+for day in range(workingDayPerMonth):
+    attendance_check = random.randint(0, 2)
+    checkEmployee(attendance_check)
+
+print("Employee Monthly wage is : ", employeeMonthlyWage, "$") # printing employee monthly wage outside of for loop.
