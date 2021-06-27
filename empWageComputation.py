@@ -12,7 +12,6 @@ import random
 employeeMonthlyWage = 0
 employeeWorkRatePerHour = 0
 
-
 def calculate_employee_wage(workRatePerHour):
     """
 
@@ -32,7 +31,7 @@ def calculate_employee_wage(workRatePerHour):
     # global variable employee monthly wage.
     global employeeMonthlyWage
     global employeeWorkRatePerHour
-
+  
     # assigning employee work rate per hour with work rate per hour.
     employeeWorkRatePerHour = workRatePerHour
     # constant variable
@@ -113,6 +112,23 @@ def checkEmployee(check):
     return func()
 
 
+
+def getWorkHours(employeeHours):
+    """
+
+    Description:
+        This function  is used for calculating employee daily work hour.
+
+
+    Parameter:
+        employee hour is used for getting employee daily hour if an employee is
+        full time it will store 8 and if employee is part time it wil store 4.
+
+    """
+
+    print("Employee Work Hours is :" ,employeeHours)
+
+
 print(" Welcome to Employee Wage Computation Program ")
 # Constant variable
 WORKING_DAYS_PER_MONTH = 20
@@ -130,9 +146,11 @@ while (totalWorkingHours <= WORKING_HOURS_PER_MONTH and totalWorkingDays < WORKI
     # increamenting days.
     totalWorkingDays += 1
     totalWorkingHours += employeeWorkRatePerHour
+    getWorkHours(employeeWorkRatePerHour)
 
-# total working hours of an employee
-print("Employee Total Hours is :" ,totalWorkingHours)
+   
 
 # printing employee monthly wage outside of for loop.
 print("Employee Monthly wage is : ", employeeMonthlyWage, "$")
+
+
