@@ -3,7 +3,7 @@
 @Date: 2021-06-26
 @Last Modified by: Rikesh Chhetri
 @Last Modified time: 2021-06-26 15:02:30
-@Title : Program Aim is to Calculate the Employee Daily and Monthly  Wage.
+@Title : Program Aim is to Calculate the Employee Daily and Monthly Wage.
 """
 
 import random
@@ -12,6 +12,7 @@ import random
 employeeMonthlyWage = 0
 employeeWorkRatePerHour = 0
 employeeDailyWage = 0
+
 
 def calculate_employee_wage(workRatePerHour):
     """
@@ -140,8 +141,8 @@ WORKING_HOURS_PER_MONTH = 100
 totalWorkingDays = 0
 totalWorkingHours = 0
 
-# List for storing daily and monthly wage of an employee
-storingEmployeeWages = []
+# Dictionary for storing  Day , daily and monthly wage of an employee
+storingEmployeeWages = {}
 
 
 while (totalWorkingHours <= WORKING_HOURS_PER_MONTH and totalWorkingDays < WORKING_DAYS_PER_MONTH):
@@ -153,15 +154,16 @@ while (totalWorkingHours <= WORKING_HOURS_PER_MONTH and totalWorkingDays < WORKI
     totalWorkingDays += 1
     totalWorkingHours += employeeWorkRatePerHour
     getWorkHours(employeeWorkRatePerHour)
-    # appending daily wage into list within while loop.
-    storingEmployeeWages.append(employeeDailyWage)
+
+    # updating daily wage into dictionary within while loop.
+    storingEmployeeWages.update({totalWorkingDays: employeeDailyWage})
 
 
 # printing employee monthly wage outside of for loop.
 print("Employee Monthly wage is : ", employeeMonthlyWage, "$")
 
-# storing total wage of employee into List
-storingEmployeeWages.append(employeeMonthlyWage)
+# storing total wage of employee into dictionary
+storingEmployeeWages.update({'Total Wage': employeeMonthlyWage})
 
 # printing employee wages stored inside list.
 print(storingEmployeeWages)
