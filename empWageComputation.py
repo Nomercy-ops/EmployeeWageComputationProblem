@@ -11,6 +11,7 @@ import random
 # variable for storing employee monthly wage and work rate per hour.
 employeeMonthlyWage = 0
 employeeWorkRatePerHour = 0
+employeeDailyWage = 0
 
 def calculate_employee_wage(workRatePerHour):
     """
@@ -22,16 +23,17 @@ def calculate_employee_wage(workRatePerHour):
         Employee monthly wage is also calculated here and stored the value inside global variable employee monthly wage.
 
 
-
     Parameter:
         workRatePerHour  will be 8 for full time employee and 4 for part timr employee,
         and used for calculating daily wage.
 
     """
+
     # global variable employee monthly wage.
     global employeeMonthlyWage
     global employeeWorkRatePerHour
-  
+    global employeeDailyWage
+
     # assigning employee work rate per hour with work rate per hour.
     employeeWorkRatePerHour = workRatePerHour
     # constant variable
@@ -112,7 +114,6 @@ def checkEmployee(check):
     return func()
 
 
-
 def getWorkHours(employeeHours):
     """
 
@@ -126,10 +127,11 @@ def getWorkHours(employeeHours):
 
     """
 
-    print("Employee Work Hours is :" ,employeeHours)
+    print("Employee Work Hours is :", employeeHours)
 
 
 print(" Welcome to Employee Wage Computation Program ")
+
 # Constant variable
 WORKING_DAYS_PER_MONTH = 20
 WORKING_HOURS_PER_MONTH = 100
@@ -137,6 +139,10 @@ WORKING_HOURS_PER_MONTH = 100
 # instance variable
 totalWorkingDays = 0
 totalWorkingHours = 0
+
+# List for storing daily and monthly wage of an employee
+storingEmployeeWages = []
+
 
 while (totalWorkingHours <= WORKING_HOURS_PER_MONTH and totalWorkingDays < WORKING_DAYS_PER_MONTH):
 
@@ -147,10 +153,15 @@ while (totalWorkingHours <= WORKING_HOURS_PER_MONTH and totalWorkingDays < WORKI
     totalWorkingDays += 1
     totalWorkingHours += employeeWorkRatePerHour
     getWorkHours(employeeWorkRatePerHour)
+    # appending daily wage into list within while loop.
+    storingEmployeeWages.append(employeeDailyWage)
 
-   
 
 # printing employee monthly wage outside of for loop.
 print("Employee Monthly wage is : ", employeeMonthlyWage, "$")
 
+# storing total wage of employee into List
+storingEmployeeWages.append(employeeMonthlyWage)
 
+# printing employee wages stored inside list.
+print(storingEmployeeWages)
